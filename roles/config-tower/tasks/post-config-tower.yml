@@ -1,4 +1,6 @@
 - name: Create Homework Assignment project
+  debug:
+    msg: "My HomeWork Assignment"
 
 
 - name: Machine Credentail to connect to workstation using openstack.pub
