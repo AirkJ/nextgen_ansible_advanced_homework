@@ -3,6 +3,16 @@
   tasks:
   - name: OpenStack servers
   - name: Curl website
+    uri:
+      url: "https://frontend1/ping"
+      return_content: yes
+      until: '"alive" in result.content'
+      retries: 10
+      delay: 1
+      register: result
+      delegate_to: localhost
+
+
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
