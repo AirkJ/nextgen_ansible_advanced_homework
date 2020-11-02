@@ -1,5 +1,11 @@
 ---
 # tasks file for osp.servers
+- name:
+  debug:
+    msg: "{{item}}"
+  loop: "{{ q('dict',osp_servers) }}"
+
+
 - name: Create instances
   os_server:
     cloud: openstack
@@ -12,7 +18,7 @@
     wait: no
     nics:
       - net-name: int_network
-    meta: "group={{ __inst.value.meta.group | list }},deployment_name={{ __inst.value.meta.deployment_name|list }}"
+    meta: "group={{ __inst.value.meta.group }},deployment_name={{ __inst.value.meta.deployment_name }}"
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
