@@ -19,7 +19,7 @@ osp_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
-  app2:
+  app3:
     name: app2
     state: present
     image: rhel-guest
