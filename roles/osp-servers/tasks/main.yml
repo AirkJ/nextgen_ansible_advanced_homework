@@ -17,7 +17,7 @@
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ query(osp_servers ,'all') }}"
+  loop: "{{ query('osp_servers' ,'all') }}"
   # lookup('dict', key_dict, wantlist=True)
   loop_control:
     loop_var: __inst
