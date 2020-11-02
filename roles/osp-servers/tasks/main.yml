@@ -3,11 +3,11 @@
 - name: Create instances
   os_server:
     cloud: openstack
-    name: "{{ __inst.0.name }}"
-    image: "{{ __inst.0.image }}"
-    key_name: "{{ __inst.0.key_name }}"
-    flavor: "{{ __inst.0.flavor }}"
-    security_groups: "{{ __inst.0.security_group }}"
+    name: "{{ __inst.value.name }}"
+    image: "{{ __inst.value.image }}"
+    key_name: "{{ __inst.value.key_name }}"
+    flavor: "{{ __inst.value.flavor }}"
+    security_groups: "{{ __inst.value.security_group }}"
     delete_fip: yes
     wait: no
     nics:
