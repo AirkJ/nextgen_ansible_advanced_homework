@@ -2,8 +2,11 @@
 # tasks file for osp.servers
 - name:
   debug:
-    msg: "{{item}}"
+    msg: "{{__inst.value.name}}"
   loop: "{{ q('dict',osp_servers) }}"
+  loop_control:
+    loop_var: __inst
+
 
 
 - name: Create instances
