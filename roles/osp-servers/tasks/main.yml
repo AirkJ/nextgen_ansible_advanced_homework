@@ -3,7 +3,7 @@
 - name: Create instances
   os_server:
     cloud: openstack
-    name: "{{ __inst.name }}"
+    name: "{{ __instance.name }}"
     image: "{{ __inst.image}}"
     key_name: "{{ __inst.key_name}}"
     flavor: "{{ __inst.flavor}}"
@@ -19,7 +19,7 @@
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
   loop: "{{ osp_servers }}"
   loop_control:
-    loop_var: __inst
+    loop_var: __instance
     
 
 - name: Add floating IP to instance
