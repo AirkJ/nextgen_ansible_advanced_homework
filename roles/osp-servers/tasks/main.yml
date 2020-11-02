@@ -3,23 +3,23 @@
 - name: Create instances
   os_server:
     cloud: openstack
-    name: "{{ __instance.name }}"
-    image: "{{ __inst.image}}"
-    key_name: "{{ __inst.key_name}}"
-    flavor: "{{ __inst.flavor}}"
-    security_groups: "{{ __inst.security_group}}"
+    name: "{{ __inst.[0].name }}"
+    image: "{{ __inst.[0].image}}"
+    key_name: "{{ __inst.[0].key_name}}"
+    flavor: "{{ __inst.[0].flavor}}"
+    security_groups: "{{ __inst..[0].security_group}}"
     delete_fip: yes
     wait: no
     nics:
       - net-name: int_network
-    meta: "group={{__inst.meta.group}},deployment_name={{__inst.meta.deployment_name}}"
+    meta: "group={{__inst.[0].meta.group}},deployment_name={{__inst.[0].meta.deployment_name}}"
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
   loop: "{{ osp_servers }}"
   loop_control:
-    loop_var: __instance
+    loop_var: __inst
     
 
 - name: Add floating IP to instance
