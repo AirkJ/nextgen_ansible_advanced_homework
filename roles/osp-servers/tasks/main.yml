@@ -29,7 +29,7 @@
     server: "{{ __inst.value.name }}"
     network: ext_network
     wait: true
-    timeout: 200
+    timeout: 120
   loop: "{{ q('dict',osp_servers) }}" 
   loop_control:
     loop_var: __inst 
