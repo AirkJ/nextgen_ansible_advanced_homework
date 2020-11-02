@@ -7,7 +7,7 @@
     image: "{{ __inst.[0].image}}"
     key_name: "{{ __inst.[0].key_name}}"
     flavor: "{{ __inst.[0].flavor}}"
-    security_groups: "{{ __inst..[0].security_group}}"
+    security_groups: "{{ __inst.[0].security_group}}"
     delete_fip: yes
     wait: no
     nics:
