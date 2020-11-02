@@ -2,7 +2,7 @@
 # tasks file for osp.servers
 - name:
   debug:
-    msg: "{{ __inst.key[0] }}"
+    msg: "{{ __inst.value.image }}"
   loop: "{{ q('dict',osp_servers) }}"
   loop_control:
     loop_var: __inst
