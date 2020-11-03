@@ -1,6 +1,12 @@
 ---
 # tasks file for roles/flask
-
+    - name: Add IP address to host file
+      lineinfile:
+        path: /etc/hosts
+        regexp: '*appdb1$'
+        line: "{{ groups.appdbs[0] }} appdb1"
+        state: present
+    
     - name: Create flask user
       user:
         name: "{{ flask_user }}"
