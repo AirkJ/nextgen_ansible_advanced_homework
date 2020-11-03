@@ -3,7 +3,7 @@
     - name: Add IP address to host file
       lineinfile:
         path: /etc/hosts
-        regexp: '*appdb1$'
+        regexp: '.*appdb1$'
         line: "{{ groups.appdbs[0] }} appdb1"
         state: present
     
